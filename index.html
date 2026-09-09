@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>IMXP · Business Readiness</title>
+<meta name="description" content="Business Readiness — your business avatar. You choose what to share with advisors and lenders." />
+<meta property="og:title" content="IMXP · Business Readiness" />
+<meta property="og:description" content="Your business avatar. You choose what to share with advisors and lenders." />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='black'/><text y='72' x='50' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>i</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0c0c0f; --paper:#ffffff; --white:#ffffff;
+    --dim-d:rgba(255,255,255,.72); --faint-d:rgba(255,255,255,.5);
+    --dim-l:#5a5a66; --line-l:rgba(12,12,15,.14); --line-d:rgba(255,255,255,.22);
+    --teal:#8fe6e2; --green:#96eda1; --yellow:#ffd75e; --lav:#c3bdf2; --orange:#ffbe7d;
+    --navy:#211d54;
+    --disp:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+    --edge:clamp(26px,4.6cqw,84px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{background:linear-gradient(170deg,#26262c,#1c1c21);color:var(--ink);font-family:var(--sans);
+    overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+  #frame{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:3.2vh 2.4vw}
+  #stage{position:relative;aspect-ratio:16/9;width:min(94vw,calc(92vh*16/9));
+    border-radius:14px;overflow:hidden;container-type:size;
+    box-shadow:0 30px 80px rgba(0,0,0,.65),0 4px 16px rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.08);background:#0b0b0f}
+  #deck{position:absolute;inset:0}
+
+  /* ---------- slides ---------- */
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(84px,13cqh,150px) var(--edge) clamp(80px,12cqh,140px);
+    opacity:0;visibility:hidden;transform:translateY(18px);background:var(--paper);
+    transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1),visibility .55s;
+    pointer-events:none}
+  .slide.active{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .slide.active .st{animation:rise .6s cubic-bezier(.22,.61,.36,1) both}
+  .slide.active .st:nth-child(2){animation-delay:.06s}
+  .slide.active .st:nth-child(3){animation-delay:.12s}
+  .slide.active .st:nth-child(4){animation-delay:.18s}
+  .slide.active .st:nth-child(5){animation-delay:.24s}
+  .slide.active .st:nth-child(6){animation-delay:.30s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .slide.dark{background:radial-gradient(120% 120% at 20% 0%,#232049,#0c0c14 60%);color:var(--white)}
+  .slide.ink{background:linear-gradient(165deg,#111119,#07070b);color:var(--white)}
+
+  /* per-slide chrome */
+  .chip{position:absolute;top:clamp(26px,4.6cqh,52px);left:var(--edge);z-index:3;
+    font-family:var(--disp);font-weight:800;font-size:clamp(.72rem,1cqw,.9rem);letter-spacing:.02em;text-transform:uppercase}
+  .slide.light .chip{color:var(--dim-l)}
+  .slide.dark .chip,.slide.ink .chip{color:var(--teal)}
+  .logo{position:absolute;top:clamp(22px,4cqh,46px);right:var(--edge);z-index:3;height:clamp(20px,2.8cqh,28px)}
+  .logo img{height:100%;width:auto;display:block}
+  .slide.light .logo img{filter:invert(1) brightness(0)}
+  .fd{position:absolute;bottom:clamp(20px,3.6cqh,38px);right:var(--edge);z-index:3;
+    font-family:var(--disp);font-weight:800;font-size:clamp(.66rem,.9cqw,.82rem);letter-spacing:.02em}
+  .slide.light .fd{color:var(--dim-l)}
+  .slide.dark .fd,.slide.ink .fd{color:var(--faint-d)}
+
+  /* typography */
+  .eyebrow{font-family:var(--disp);font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    font-size:clamp(.7rem,1cqw,.9rem);color:var(--teal)}
+  .slide.light .eyebrow{color:#159e97}
+  h1{font-family:var(--disp);font-weight:900;line-height:.98;letter-spacing:-.02em;
+    font-size:clamp(2.4rem,7.6cqw,6rem)}
+  h2{font-family:var(--disp);font-weight:800;line-height:1.02;letter-spacing:-.018em;
+    font-size:clamp(1.7rem,4.4cqw,3.4rem);max-width:20ch}
+  .lead{font-weight:300;font-size:clamp(1rem,1.7cqw,1.5rem);line-height:1.5;max-width:40ch}
+  .slide.light .lead{color:#2c2c34}
+  .slide.dark .lead,.slide.ink .lead{color:var(--dim-d)}
+  .big{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,11cqw,9rem);line-height:.9;letter-spacing:-.03em}
+
+  .gap-s{margin-top:clamp(10px,1.6cqh,18px)}
+  .gap-m{margin-top:clamp(18px,2.8cqh,34px)}
+  .gap-l{margin-top:clamp(26px,4cqh,48px)}
+
+  /* cover */
+  .cover-brand{display:flex;align-items:center;gap:14px}
+  .cover-brand img{height:clamp(26px,3.4cqh,38px)}
+  .cover-line{width:clamp(46px,7cqw,120px);height:2px;background:var(--teal)}
+
+  /* section-card grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.5cqw,22px);margin-top:clamp(20px,3cqh,40px)}
+  .card{border-radius:16px;padding:clamp(16px,2.1cqh,26px) clamp(16px,1.9cqw,26px);
+    background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);
+    display:flex;flex-direction:column;gap:10px;min-height:clamp(120px,20cqh,190px);position:relative;overflow:hidden}
+  .card .num{font-family:var(--disp);font-weight:800;font-size:.8rem;letter-spacing:.02em;color:var(--faint-d)}
+  .card h3{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.55cqw,1.35rem);letter-spacing:-.01em;line-height:1.08;color:#fff}
+  .card p{font-weight:300;font-size:clamp(.8rem,1.02cqw,.98rem);line-height:1.42;color:var(--dim-d)}
+  .card .bar{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px}
+  .card.soon{opacity:.62}
+  .tag{align-self:flex-start;font-family:var(--disp);font-weight:800;font-size:.6rem;letter-spacing:.08em;
+    text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--line-d);color:var(--faint-d);margin-top:auto}
+
+  /* two-column split */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4cqw,72px);align-items:center;height:100%}
+  .split .colL{display:flex;flex-direction:column;justify-content:center}
+
+  /* progress mock */
+  .mock{border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
+    padding:clamp(20px,2.8cqh,32px) clamp(20px,2.4cqw,34px)}
+  .mock .mhead{display:flex;align-items:center;gap:clamp(14px,1.8cqw,22px)}
+  .ring{--p:100;width:clamp(58px,8cqh,86px);aspect-ratio:1;border-radius:50%;flex:none;
+    background:conic-gradient(var(--teal) calc(var(--p)*1%),rgba(255,255,255,.14) 0);
+    display:grid;place-items:center;position:relative}
+  .ring::after{content:'';position:absolute;inset:8px;border-radius:50%;background:#101018}
+  .ring b{position:relative;z-index:1;font-family:var(--disp);font-weight:900;font-size:clamp(.95rem,1.5cqw,1.3rem);color:#fff}
+  .mhead .mt b{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.6cqw,1.4rem);color:#fff;display:block}
+  .mhead .mt span{font-size:clamp(.8rem,1cqw,.98rem);color:var(--dim-d)}
+  .checklist{list-style:none;margin-top:clamp(16px,2.4cqh,26px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(9px,1.3cqh,15px) clamp(14px,1.6cqw,26px)}
+  .checklist li{display:flex;align-items:center;gap:11px;font-size:clamp(.82rem,1.05cqw,1.02rem);color:var(--dim-d)}
+  .checklist li i{width:15px;height:15px;border-radius:50%;border:1.6px dashed rgba(255,255,255,.4);flex:none}
+  .checklist li.done i{border:none;background:var(--green);position:relative}
+  .checklist li.done i::after{content:'';position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid #0c0c14;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .checklist li.done{color:#fff}
+
+  .kv{display:flex;flex-direction:column;gap:clamp(16px,2.4cqh,28px);margin-top:clamp(20px,3cqh,38px)}
+  .kv .k{display:flex;gap:clamp(14px,1.6cqw,22px);align-items:flex-start}
+  .kv .k .d{width:11px;height:11px;border-radius:50%;flex:none;margin-top:7px}
+  .kv .k b{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.5cqw,1.35rem);color:#fff;letter-spacing:-.01em}
+  .kv .k p{font-weight:300;font-size:clamp(.85rem,1.1cqw,1.05rem);line-height:1.45;color:var(--dim-d);margin-top:3px}
+
+  .quote{font-family:var(--disp);font-weight:800;line-height:1.08;letter-spacing:-.02em;
+    font-size:clamp(1.8rem,4.6cqw,4rem);max-width:20ch}
+  .quote em{font-style:normal;color:var(--teal)}
+
+  /* nav */
+  #dots{position:absolute;bottom:clamp(18px,3.2cqh,34px);left:var(--edge);z-index:4;display:flex;gap:8px}
+  #dots button{width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(140,140,150,.5);transition:transform .25s,background .25s}
+  .slide.light ~ #dots button{}
+  #dots button.on{background:var(--teal);transform:scale(1.35)}
+  #edge-l,#edge-r{position:absolute;top:0;bottom:0;width:14%;z-index:5;cursor:pointer;background:transparent;border:none}
+  #edge-l{left:0}#edge-r{right:0}
+  #counter{position:absolute;bottom:clamp(18px,3.2cqh,34px);left:50%;transform:translateX(-50%);z-index:4;
+    font-family:var(--disp);font-weight:800;font-size:.72rem;letter-spacing:.1em;color:rgba(150,150,160,.7)}
+  .hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);
+    font-size:.72rem;letter-spacing:.04em;z-index:10;transition:opacity .5s}
+
+  @media (max-width:720px){
+    .grid{grid-template-columns:1fr 1fr}
+    .split{grid-template-columns:1fr;gap:20px}
+    .split .colR{display:none}
+    .checklist{grid-template-columns:1fr}
+    h2{max-width:none}
+  }
+</style>
+</head>
+<body>
+<div id="frame"><div id="stage"><div id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide ink active" data-name="Cover">
+    <span class="chip st">Product Concept</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="st cover-brand"><div class="cover-line"></div><span class="eyebrow">Business Readiness</span></div>
+    <h1 class="st gap-m">Your business,<br/>ready to share.</h1>
+    <p class="lead st gap-m">A single business avatar you build once — and choose exactly what to reveal to advisors and lenders.</p>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 2 · PROBLEM -->
+  <section class="slide dark" data-name="Problem">
+    <span class="chip st">The gap</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <span class="eyebrow st">When it's time to raise, borrow, or get advice</span>
+    <h2 class="st gap-s">Your story lives in ten places — and none of them are ready.</h2>
+    <p class="lead st gap-m">Financials in one folder. The team in your head. The pitch in an old deck. When an advisor or lender asks, owners scramble — and over-share to look prepared.</p>
+    <div class="fd">01</div>
+  </section>
+
+  <!-- 3 · IDEA -->
+  <section class="slide ink" data-name="Idea">
+    <span class="chip st">The idea</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <p class="quote st">One profile.<br/>Owner-controlled.<br/><em>You choose what to share.</em></p>
+    <p class="lead st gap-l">Business Readiness turns your company into a living profile — your <strong style="color:#fff;font-weight:600">business avatar</strong> — that's always up to date and ready the moment opportunity knocks.</p>
+    <div class="fd">02</div>
+  </section>
+
+  <!-- 4 · HOW IT WORKS (sections) -->
+  <section class="slide dark" data-name="Sections">
+    <span class="chip st">How it works</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <span class="eyebrow st">Six sections. Complete at your pace.</span>
+    <div class="grid">
+      <div class="card st"><span class="bar" style="background:var(--teal)"></span><span class="num">01</span><h3>Basic Info</h3><p>Who you are and what the business does — the essentials, in one place.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--green)"></span><span class="num">02</span><h3>Business Story</h3><p>The narrative behind the numbers: origin, traction, where you're headed.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--yellow)"></span><span class="num">03</span><h3>Team &amp; Ownership</h3><p>Who runs it and who owns it — the cap table advisors ask for first.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--lav)"></span><span class="num">04</span><h3>Financial Snapshot</h3><p>The headline figures a lender needs to size you up — cleanly presented.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--orange)"></span><span class="num">05</span><h3>Capital &amp; Debt</h3><p>What you've raised and what you owe — your funding picture at a glance.</p></div>
+      <div class="card st soon"><span class="bar" style="background:rgba(255,255,255,.4)"></span><span class="num">06</span><h3>Connected Accounts</h3><p>Live financial data, linked and verified.</p><span class="tag">Coming soon</span></div>
+    </div>
+    <div class="fd">03</div>
+  </section>
+
+  <!-- 5 · CONTROL / PROGRESS -->
+  <section class="slide ink" data-name="Control">
+    <span class="chip st">Built for control</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="split">
+      <div class="colL">
+        <h2 class="st">Ready on your terms.</h2>
+        <p class="lead st gap-s">Fill it in when you can. Share only what you want, with whom you choose. A completion score keeps you honest — so you're never caught unprepared.</p>
+        <div class="kv">
+          <div class="k st"><span class="d" style="background:var(--teal)"></span><div><b>You hold the keys</b><p>Nothing leaves your profile until you decide to share it.</p></div></div>
+          <div class="k st"><span class="d" style="background:var(--green)"></span><div><b>Always current</b><p>Update once — every advisor and lender sees the latest.</p></div></div>
+        </div>
+      </div>
+      <div class="colR st">
+        <div class="mock">
+          <div class="mhead">
+            <div class="ring" style="--p:100"><b>100%</b></div>
+            <div class="mt"><b>Business Readiness</b><span>5 of 5 sections completed</span></div>
+          </div>
+          <ul class="checklist">
+            <li class="done"><i></i>Basic Info</li>
+            <li class="done"><i></i>Financial Snapshot</li>
+            <li class="done"><i></i>Business Story</li>
+            <li class="done"><i></i>Capital &amp; Debt</li>
+            <li class="done"><i></i>Team &amp; Ownership</li>
+            <li><i></i>Connected Accounts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="fd">04</div>
+  </section>
+
+  <!-- 6 · WHAT'S NEXT -->
+  <section class="slide dark" data-name="Next">
+    <span class="chip st">What's next</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <span class="eyebrow st">Connected Accounts</span>
+    <h2 class="st gap-s">From a profile you fill in to one that proves itself.</h2>
+    <p class="lead st gap-m">Link your financial accounts and the snapshot updates itself — verified, real-time, and trusted by the lenders who read it. Readiness stops being a task and becomes a state you stay in.</p>
+    <div class="fd">05</div>
+  </section>
+
+  <!-- 7 · CLOSE -->
+  <section class="slide ink" data-name="Close">
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <span class="eyebrow st">Business Readiness</span>
+    <h1 class="st gap-s">Be ready<br/>before they ask.</h1>
+    <p class="lead st gap-m">Build your business avatar once. Share it on your terms. Stay ready — always.</p>
+    <div class="st gap-l cover-brand"><div class="cover-line"></div><img src="imxp-logo.png" alt="IMXP" style="height:clamp(22px,3cqh,32px)" /></div>
+    <div class="fd">IMXP</div>
+  </section>
+
+</div>
+
+<button id="edge-l" aria-label="Previous"></button>
+<button id="edge-r" aria-label="Next"></button>
+<div id="dots"></div>
+<div id="counter"></div>
+</div></div>
+<div class="hint" id="hint">Use ← → or click to navigate</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots');
+  var counter=document.getElementById('counter');
+  var i=0;
+  slides.forEach(function(s,n){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Slide '+(n+1));
+    b.addEventListener('click',function(){go(n)});
+    dotsWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+  function render(){
+    slides.forEach(function(s,n){s.classList.toggle('active',n===i)});
+    dots.forEach(function(d,n){d.classList.toggle('on',n===i)});
+    counter.textContent=('0'+(i+1)).slice(-2)+' / '+('0'+slides.length).slice(-2);
+  }
+  function go(n){i=Math.max(0,Math.min(slides.length-1,n));render();
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1))}
+  function next(){go(i+1)} function prev(){go(i-1)}
+  document.getElementById('edge-r').addEventListener('click',next);
+  document.getElementById('edge-l').addEventListener('click',prev);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(slides.length-1)}
+  });
+  var sx=0;
+  document.getElementById('stage').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  document.getElementById('stage').addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>44){dx<0?next():prev()}
+  },{passive:true});
+  var hint=document.getElementById('hint');
+  setTimeout(function(){hint.style.opacity='0'},4200);
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  if(h>=1&&h<=slides.length)i=h-1;
+  render();
+})();
+</script>
+</body>
+</html>
