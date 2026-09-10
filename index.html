@@ -105,36 +105,23 @@
     font-family:var(--disp);font-weight:800;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;
     padding:4px 11px;border-radius:999px}
 
-  /* progress mock */
+  /* readiness meter */
   .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4cqw,72px);align-items:center;height:100%}
   .split .colL{display:flex;flex-direction:column;justify-content:center}
   .mock{border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
     padding:clamp(20px,2.8cqh,32px) clamp(20px,2.4cqw,34px)}
   .mock .mhead{display:flex;align-items:center;gap:clamp(14px,1.8cqw,22px)}
-  .ring{--p:60;width:clamp(58px,8cqh,86px);aspect-ratio:1;border-radius:50%;flex:none;
-    background:conic-gradient(var(--teal) calc(var(--p)*1%),rgba(255,255,255,.14) 0);
+  .ring{--p:0;width:clamp(58px,8cqh,86px);aspect-ratio:1;border-radius:50%;flex:none;
+    background:conic-gradient(var(--teal) calc(var(--p)*1%),rgba(255,255,255,.16) 0);
     display:grid;place-items:center;position:relative}
   .ring::after{content:'';position:absolute;inset:8px;border-radius:50%;background:#101018}
   .ring b{position:relative;z-index:1;font-family:var(--disp);font-weight:900;font-size:clamp(.9rem,1.4cqw,1.2rem);color:#fff}
   .mhead .mt b{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.6cqw,1.4rem);color:#fff;display:block}
   .mhead .mt span{font-size:clamp(.8rem,1cqw,.98rem);color:var(--dim-d)}
-  .checklist{list-style:none;margin-top:clamp(16px,2.4cqh,26px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(9px,1.3cqh,15px) clamp(14px,1.6cqw,26px)}
+  .checklist{list-style:none;margin-top:clamp(16px,2.4cqh,26px);display:grid;grid-template-columns:1fr 1fr;
+    grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:clamp(9px,1.3cqh,15px) clamp(14px,1.6cqw,26px)}
   .checklist li{display:flex;align-items:center;gap:11px;font-size:clamp(.82rem,1.05cqw,1.02rem);color:var(--dim-d)}
   .checklist li i{width:15px;height:15px;border-radius:50%;border:1.6px dashed rgba(255,255,255,.4);flex:none}
-  .checklist li.done i{border:none;background:var(--green);position:relative}
-  .checklist li.done i::after{content:'';position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid #0c0c14;border-width:0 2px 2px 0;transform:rotate(45deg)}
-  .checklist li.done{color:#fff}
-  .mock-note{display:block;margin-top:clamp(12px,1.8cqh,18px);font-family:var(--disp);font-weight:800;
-    font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint-d)}
-  .kv{display:flex;flex-direction:column;gap:clamp(16px,2.4cqh,28px);margin-top:clamp(20px,3cqh,38px)}
-  .kv .k{display:flex;gap:clamp(14px,1.6cqw,22px);align-items:flex-start}
-  .kv .k .d{width:11px;height:11px;border-radius:50%;flex:none;margin-top:7px}
-  .kv .k b{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.5cqw,1.35rem);color:#fff;letter-spacing:-.01em}
-  .kv .k p{font-weight:300;font-size:clamp(.85rem,1.1cqw,1.05rem);line-height:1.45;color:var(--dim-d);margin-top:3px}
-
-  .quote{font-family:var(--disp);font-weight:800;line-height:1.08;letter-spacing:-.02em;
-    font-size:clamp(1.8rem,4.6cqw,4rem);max-width:20ch}
-  .quote em{font-style:normal;color:var(--teal)}
 
   /* nav */
   #dots{position:absolute;bottom:clamp(18px,3.2cqh,34px);left:var(--edge);z-index:4;display:flex;gap:7px}
@@ -152,7 +139,8 @@
     .grid{grid-template-columns:1fr 1fr}
     .split{grid-template-columns:1fr;gap:20px}
     .split .colR{display:none}
-    .checklist,.fields{grid-template-columns:1fr}
+    .checklist{grid-template-columns:1fr;grid-auto-flow:row;grid-template-rows:none}
+    .fields{grid-template-columns:1fr}
     h2{max-width:none}
   }
 </style>
@@ -162,50 +150,29 @@
 
   <!-- 1 · COVER -->
   <section class="slide ink active" data-name="Cover">
-    <span class="chip st">Product Concept</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <div class="st cover-brand"><div class="cover-line"></div><span class="eyebrow">Business Readiness</span></div>
-    <h1 class="st gap-m">Your business,<br/>ready to share.</h1>
+    <div class="st cover-brand"><div class="cover-line"></div><span class="eyebrow">IMXP</span></div>
+    <h1 class="st gap-m">Business Readiness</h1>
     <p class="lead st gap-m">Your business avatar. You choose what to share with advisors and lenders.</p>
     <div class="fd">IMXP</div>
   </section>
 
-  <!-- 2 · PROBLEM -->
-  <section class="slide dark" data-name="Problem">
-    <span class="chip st">The problem</span>
-    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <span class="eyebrow st">When it is time to raise, borrow, or get advice</span>
-    <h2 class="st gap-s">Your business story lives in ten places, and none of them are ready.</h2>
-    <p class="lead st gap-m">Financials in one folder, the team in your head, the pitch in an old deck. When an advisor or lender asks, owners scramble, then over-share to look prepared.</p>
-    <div class="fd">01</div>
-  </section>
-
-  <!-- 3 · IDEA -->
-  <section class="slide ink" data-name="Idea">
-    <span class="chip st">The idea</span>
-    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <p class="quote st">One profile.<br/>Owner-controlled.<br/><em>You choose what to share.</em></p>
-    <p class="lead st gap-l">Business Readiness is your business avatar: one profile you build, keep current, and share on your terms with the advisors and lenders you choose.</p>
-    <div class="fd">02</div>
-  </section>
-
-  <!-- 4 · OVERVIEW -->
+  <!-- 2 · OVERVIEW -->
   <section class="slide dark" data-name="Overview">
     <span class="chip st">The profile</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <span class="eyebrow st">Six sections, five active today</span>
+    <span class="eyebrow st">Five sections</span>
     <div class="grid">
-      <div class="card st"><span class="bar" style="background:var(--teal)"></span><span class="num">01</span><h3>Basic Info</h3><p>Who you are.</p></div>
-      <div class="card st"><span class="bar" style="background:var(--green)"></span><span class="num">02</span><h3>Business Story</h3><p>The narrative.</p></div>
-      <div class="card st"><span class="bar" style="background:var(--yellow)"></span><span class="num">03</span><h3>Team &amp; Ownership</h3><p>Who runs and owns it.</p></div>
-      <div class="card st"><span class="bar" style="background:var(--lav)"></span><span class="num">04</span><h3>Financial Snapshot</h3><p>The headline numbers.</p></div>
-      <div class="card st"><span class="bar" style="background:var(--orange)"></span><span class="num">05</span><h3>Capital &amp; Debt</h3><p>Funding and obligations.</p></div>
-      <div class="card st soon"><span class="bar" style="background:rgba(255,255,255,.4)"></span><span class="num">06</span><h3>Connected Accounts</h3><p>Live verified data.</p><span class="tag">Coming soon</span></div>
+      <div class="card st"><span class="bar" style="background:var(--teal)"></span><span class="num">01</span><h3>Basic Info</h3></div>
+      <div class="card st"><span class="bar" style="background:var(--green)"></span><span class="num">02</span><h3>Business Story</h3></div>
+      <div class="card st"><span class="bar" style="background:var(--yellow)"></span><span class="num">03</span><h3>Team &amp; Ownership</h3></div>
+      <div class="card st"><span class="bar" style="background:var(--lav)"></span><span class="num">04</span><h3>Financial Snapshot</h3></div>
+      <div class="card st"><span class="bar" style="background:var(--orange)"></span><span class="num">05</span><h3>Capital &amp; Debt</h3></div>
     </div>
-    <div class="fd">03</div>
+    <div class="fd">IMXP</div>
   </section>
 
-  <!-- 5 · BASIC INFO -->
+  <!-- 3 · BASIC INFO -->
   <section class="slide ink" data-name="Basic Info" style="--accent:var(--teal)">
     <span class="chip st">Section 01</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
@@ -221,10 +188,10 @@
       <li>Website and contact</li>
     </ul>
     <span class="flag st">Typical fields, confirm with product</span>
-    <div class="fd">04</div>
+    <div class="fd">IMXP</div>
   </section>
 
-  <!-- 6 · BUSINESS STORY -->
+  <!-- 4 · BUSINESS STORY -->
   <section class="slide dark" data-name="Business Story" style="--accent:var(--green)">
     <span class="chip st">Section 02</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
@@ -239,10 +206,10 @@
       <li>Traction and milestones</li>
     </ul>
     <span class="flag st">Typical fields, confirm with product</span>
-    <div class="fd">05</div>
+    <div class="fd">IMXP</div>
   </section>
 
-  <!-- 7 · TEAM & OWNERSHIP -->
+  <!-- 5 · TEAM & OWNERSHIP -->
   <section class="slide ink" data-name="Team & Ownership" style="--accent:var(--yellow)">
     <span class="chip st">Section 03</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
@@ -256,10 +223,10 @@
       <li>Advisors or board</li>
     </ul>
     <span class="flag st">Typical fields, confirm with product</span>
-    <div class="fd">06</div>
+    <div class="fd">IMXP</div>
   </section>
 
-  <!-- 8 · FINANCIAL SNAPSHOT -->
+  <!-- 6 · FINANCIAL SNAPSHOT -->
   <section class="slide dark" data-name="Financial Snapshot" style="--accent:var(--lav)">
     <span class="chip st">Section 04</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
@@ -274,10 +241,10 @@
       <li>Metrics for your model</li>
     </ul>
     <span class="flag st">Typical fields, confirm with product</span>
-    <div class="fd">07</div>
+    <div class="fd">IMXP</div>
   </section>
 
-  <!-- 9 · CAPITAL & DEBT -->
+  <!-- 7 · CAPITAL & DEBT -->
   <section class="slide ink" data-name="Capital & Debt" style="--accent:var(--orange)">
     <span class="chip st">Section 05</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
@@ -291,66 +258,34 @@
       <li>What you are seeking now</li>
     </ul>
     <span class="flag st">Typical fields, confirm with product</span>
-    <div class="fd">08</div>
+    <div class="fd">IMXP</div>
   </section>
 
-  <!-- 10 · CONNECTED ACCOUNTS -->
-  <section class="slide dark" data-name="Connected Accounts" style="--accent:#c9d2e0">
-    <span class="chip st">Section 06</span>
-    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <div class="sechead st"><span class="secnum">06</span><h2>Connected Accounts</h2></div>
-    <p class="lead st gap-s">Live, verified financial data, linked from the source.</p>
-    <ul class="fields st">
-      <li>Bank accounts</li>
-      <li>Accounting software</li>
-      <li>Payment processors</li>
-      <li>Auto-updates your Financial Snapshot</li>
-    </ul>
-    <span class="flag st">Coming soon, integrations to confirm</span>
-    <div class="fd">09</div>
-  </section>
-
-  <!-- 11 · CONTROL -->
-  <section class="slide ink" data-name="Control">
-    <span class="chip st">Built for control</span>
+  <!-- 8 · READINESS METER -->
+  <section class="slide ink" data-name="Readiness">
+    <span class="chip st">Readiness</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
     <div class="split">
       <div class="colL">
-        <h2 class="st">Ready on your terms.</h2>
-        <p class="lead st gap-s">You choose what to share, and with whom. A completion score tracks how ready your profile is.</p>
-        <div class="kv">
-          <div class="k st"><span class="d" style="background:var(--teal)"></span><div><b>You hold the keys</b><p>Nothing leaves your profile until you decide to share it.</p></div></div>
-          <div class="k st"><span class="d" style="background:var(--green)"></span><div><b>Completion score</b><p>Sections completed out of five, shown as you fill them in.</p></div></div>
-        </div>
+        <h2 class="st">Your readiness, at a glance.</h2>
+        <p class="lead st gap-s">Complete each section at your pace. You choose what to share, and with whom.</p>
       </div>
       <div class="colR st">
         <div class="mock">
           <div class="mhead">
-            <div class="ring" style="--p:60"><b>60%</b></div>
-            <div class="mt"><b>Business Readiness</b><span>3 of 5 sections completed</span></div>
+            <div class="ring" style="--p:0"><b>0%</b></div>
+            <div class="mt"><b>Business Readiness</b><span>0 of 5 sections completed</span></div>
           </div>
           <ul class="checklist">
-            <li class="done"><i></i>Basic Info</li>
+            <li><i></i>Basic Info</li>
+            <li><i></i>Business Story</li>
+            <li><i></i>Team &amp; Ownership</li>
             <li><i></i>Financial Snapshot</li>
-            <li class="done"><i></i>Business Story</li>
             <li><i></i>Capital &amp; Debt</li>
-            <li class="done"><i></i>Team &amp; Ownership</li>
-            <li><i></i>Connected Accounts</li>
           </ul>
-          <span class="mock-note">Illustrative UI, not real data</span>
         </div>
       </div>
     </div>
-    <div class="fd">10</div>
-  </section>
-
-  <!-- 12 · CLOSE -->
-  <section class="slide ink" data-name="Close">
-    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <span class="eyebrow st">Business Readiness</span>
-    <h1 class="st gap-s">Be ready<br/>before they ask.</h1>
-    <p class="lead st gap-m">Build your business avatar once. Share it on your terms.</p>
-    <div class="st gap-l cover-brand"><div class="cover-line"></div><img src="imxp-logo.png" alt="IMXP" style="height:clamp(22px,3cqh,32px)" /></div>
     <div class="fd">IMXP</div>
   </section>
 
