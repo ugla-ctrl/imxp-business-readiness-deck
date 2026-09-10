@@ -1,33 +1,26 @@
 # IMXP · Business Readiness Mini Deck
 
-A short (7 slide) concept deck for IMXP's **Business Readiness** feature: a business
-"avatar" an owner builds once and shares selectively with advisors and lenders.
+A cinematic 7-slide company profile for IMXP, framed as the "Business Readiness"
+avatar an owner shares with advisors and lenders.
 
-Built from Mitch's product screenshot (My Profile, Business Readiness).
+## Slides
+1. Cover, eclipse photography, "Building the operating system for the next generation of events."
+2. Basic Info, company identity spec sheet.
+3. Business Story, mission and the Eclipse Trilogy over festival photography.
+4. Team & Ownership, founder spotlight (Mitch Morales, Founder & CEO).
+5. Financial Snapshot, revenue model pillars.
+6. Capital & Debt, stage and use of funds.
+7. Readiness meter.
 
-## Confirmed vs. placeholder
-
-Only the content visible in the screenshot is treated as fact:
-
-- The label "Business Readiness" and the tagline "Your business avatar. You choose what
-  to share with advisors and lenders."
-- The six section names: Basic Info, Business Story, Team & Ownership, Financial Snapshot,
-  Capital & Debt, Connected Accounts (Coming Soon).
-- The completion mechanic (sections completed out of five).
-
-Everything not confirmed is shown as a **yellow placeholder** in the deck with a short
-GUIDE note describing what to fill in. Replace those before sharing externally.
-
-Open question flagged for Mitch: in Ugla's records IMXP is the immersive experiences /
-eclipse events company, and this Business Readiness product is not in Ugla's memory, so
-the positioning needs Mitch's confirmation.
+## Data
+Company facts sourced from IMXP's info deck, Notion IMXP Hub, and investor records.
+No sensitive data is included: no dollar figures, valuation, EIN, ownership splits,
+or personal details. The Financial and Capital slides note that figures are shared
+privately.
 
 ## View
-Open `index.html`, or the GitHub Pages URL once published.
+Open `index.html`, or the GitHub Pages URL. Navigate with arrow keys, click the left
+or right edge, tap the dots, or swipe. Deep link to a slide with `#4`.
 
-## Navigate
-Arrow keys, click the left or right edge, tap the dots, or swipe on mobile.
-Deep link to a slide with `#4` in the URL.
-
-Self contained: one HTML file plus the IMXP logo. No build step. Matches the IMXP deck
-brand (Archivo / Inter, dark stage, accent palette).
+Self-contained: one HTML file plus the IMXP logo and three images in `media/`.
+Brand: Archivo / Inter, cosmic dark stage, eclipse motif, accent palette.
