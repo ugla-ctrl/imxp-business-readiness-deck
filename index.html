@@ -55,52 +55,37 @@
   /* per-slide chrome */
   .chip{position:absolute;top:clamp(26px,4.6cqh,52px);left:var(--edge);z-index:3;
     font-family:var(--disp);font-weight:800;font-size:clamp(.72rem,1cqw,.9rem);letter-spacing:.02em;text-transform:uppercase}
-  .slide.light .chip{color:var(--dim-l)}
   .slide.dark .chip,.slide.ink .chip{color:var(--teal)}
   .logo{position:absolute;top:clamp(22px,4cqh,46px);right:var(--edge);z-index:3;height:clamp(20px,2.8cqh,28px)}
   .logo img{height:100%;width:auto;display:block}
-  .slide.light .logo img{filter:invert(1) brightness(0)}
   .fd{position:absolute;bottom:clamp(20px,3.6cqh,38px);right:var(--edge);z-index:3;
     font-family:var(--disp);font-weight:800;font-size:clamp(.66rem,.9cqw,.82rem);letter-spacing:.02em}
-  .slide.light .fd{color:var(--dim-l)}
   .slide.dark .fd,.slide.ink .fd{color:var(--faint-d)}
 
   /* typography */
   .eyebrow{font-family:var(--disp);font-weight:800;letter-spacing:.14em;text-transform:uppercase;
     font-size:clamp(.7rem,1cqw,.9rem);color:var(--teal)}
-  .slide.light .eyebrow{color:#159e97}
   h1{font-family:var(--disp);font-weight:900;line-height:.98;letter-spacing:-.02em;
     font-size:clamp(2.4rem,7.6cqw,6rem)}
   h2{font-family:var(--disp);font-weight:800;line-height:1.02;letter-spacing:-.018em;
     font-size:clamp(1.7rem,4.4cqw,3.4rem);max-width:20ch}
   .lead{font-weight:300;font-size:clamp(1rem,1.7cqw,1.5rem);line-height:1.5;max-width:42ch}
-  .slide.light .lead{color:#2c2c34}
   .slide.dark .lead,.slide.ink .lead{color:var(--dim-d)}
-  .big{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,11cqw,9rem);line-height:.9;letter-spacing:-.03em}
 
   .gap-s{margin-top:clamp(10px,1.6cqh,18px)}
   .gap-m{margin-top:clamp(18px,2.8cqh,34px)}
   .gap-l{margin-top:clamp(26px,4cqh,48px)}
-
-  /* yellow placeholder: text that still needs real, confirmed content */
-  .ph{background:var(--yellow);color:#0c0c0f;padding:.1em .45em;border-radius:5px;font-weight:600;
-    box-decoration-break:clone;-webkit-box-decoration-break:clone;font-family:var(--sans);letter-spacing:0}
-  .ph b{font-weight:800}
-  h1 .ph,h2 .ph,.quote .ph{font-size:clamp(.92rem,1.45cqw,1.3rem);font-weight:700;line-height:1.55;letter-spacing:0;display:inline}
-  .lead .ph{font-size:clamp(.9rem,1.3cqw,1.15rem);font-weight:600;line-height:1.6}
-  .card .ph{font-size:clamp(.76rem,.98cqw,.94rem);padding:.12em .4em;line-height:1.5}
-  .kv .k .ph{font-size:clamp(.8rem,1.02cqw,.98rem);padding:.1em .38em}
 
   /* cover */
   .cover-brand{display:flex;align-items:center;gap:14px}
   .cover-brand img{height:clamp(26px,3.4cqh,38px)}
   .cover-line{width:clamp(46px,7cqw,120px);height:2px;background:var(--teal)}
 
-  /* section-card grid */
+  /* section overview grid */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.5cqw,22px);margin-top:clamp(20px,3cqh,40px)}
   .card{border-radius:16px;padding:clamp(16px,2.1cqh,26px) clamp(16px,1.9cqw,26px);
     background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);
-    display:flex;flex-direction:column;gap:10px;min-height:clamp(120px,20cqh,190px);position:relative;overflow:hidden}
+    display:flex;flex-direction:column;gap:8px;min-height:clamp(110px,18cqh,170px);position:relative;overflow:hidden}
   .card .num{font-family:var(--disp);font-weight:800;font-size:.8rem;letter-spacing:.02em;color:var(--faint-d)}
   .card h3{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.55cqw,1.35rem);letter-spacing:-.01em;line-height:1.08;color:#fff}
   .card p{font-weight:300;font-size:clamp(.8rem,1.02cqw,.98rem);line-height:1.42;color:var(--dim-d)}
@@ -109,11 +94,20 @@
   .tag{align-self:flex-start;font-family:var(--disp);font-weight:800;font-size:.6rem;letter-spacing:.08em;
     text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--line-d);color:var(--faint-d);margin-top:auto}
 
-  /* two-column split */
-  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4cqw,72px);align-items:center;height:100%}
-  .split .colL{display:flex;flex-direction:column;justify-content:center}
+  /* section detail slide */
+  .sechead{display:flex;align-items:baseline;gap:clamp(12px,1.8cqw,26px)}
+  .secnum{font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6cqw,4.6rem);line-height:.85;letter-spacing:-.03em;color:var(--accent,var(--teal))}
+  .fields{list-style:none;margin-top:clamp(16px,2.6cqh,34px);display:grid;grid-template-columns:1fr 1fr;
+    gap:clamp(9px,1.5cqh,16px) clamp(22px,3.2cqw,56px);max-width:60ch}
+  .fields li{display:flex;align-items:flex-start;gap:11px;font-size:clamp(.88rem,1.2cqw,1.12rem);line-height:1.38;color:var(--dim-d)}
+  .fields li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent,var(--teal));margin-top:8px;flex:none}
+  .flag{align-self:flex-start;display:inline-block;margin-top:clamp(16px,2.4cqh,28px);background:var(--yellow);color:#0c0c0f;
+    font-family:var(--disp);font-weight:800;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 11px;border-radius:999px}
 
   /* progress mock */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4cqw,72px);align-items:center;height:100%}
+  .split .colL{display:flex;flex-direction:column;justify-content:center}
   .mock{border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
     padding:clamp(20px,2.8cqh,32px) clamp(20px,2.4cqw,34px)}
   .mock .mhead{display:flex;align-items:center;gap:clamp(14px,1.8cqw,22px)}
@@ -132,7 +126,6 @@
   .checklist li.done{color:#fff}
   .mock-note{display:block;margin-top:clamp(12px,1.8cqh,18px);font-family:var(--disp);font-weight:800;
     font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint-d)}
-
   .kv{display:flex;flex-direction:column;gap:clamp(16px,2.4cqh,28px);margin-top:clamp(20px,3cqh,38px)}
   .kv .k{display:flex;gap:clamp(14px,1.6cqw,22px);align-items:flex-start}
   .kv .k .d{width:11px;height:11px;border-radius:50%;flex:none;margin-top:7px}
@@ -144,10 +137,10 @@
   .quote em{font-style:normal;color:var(--teal)}
 
   /* nav */
-  #dots{position:absolute;bottom:clamp(18px,3.2cqh,34px);left:var(--edge);z-index:4;display:flex;gap:8px}
-  #dots button{width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;
+  #dots{position:absolute;bottom:clamp(18px,3.2cqh,34px);left:var(--edge);z-index:4;display:flex;gap:7px}
+  #dots button{width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
     background:rgba(140,140,150,.5);transition:transform .25s,background .25s}
-  #dots button.on{background:var(--teal);transform:scale(1.35)}
+  #dots button.on{background:var(--teal);transform:scale(1.4)}
   #edge-l,#edge-r{position:absolute;top:0;bottom:0;width:14%;z-index:5;cursor:pointer;background:transparent;border:none}
   #edge-l{left:0}#edge-r{right:0}
   #counter{position:absolute;bottom:clamp(18px,3.2cqh,34px);left:50%;transform:translateX(-50%);z-index:4;
@@ -159,7 +152,7 @@
     .grid{grid-template-columns:1fr 1fr}
     .split{grid-template-columns:1fr;gap:20px}
     .split .colR{display:none}
-    .checklist{grid-template-columns:1fr}
+    .checklist,.fields{grid-template-columns:1fr}
     h2{max-width:none}
   }
 </style>
@@ -177,13 +170,13 @@
     <div class="fd">IMXP</div>
   </section>
 
-  <!-- 2 · PROBLEM (needs confirmed content) -->
+  <!-- 2 · PROBLEM -->
   <section class="slide dark" data-name="Problem">
     <span class="chip st">The problem</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <span class="eyebrow st">Why Business Readiness exists</span>
-    <h2 class="st gap-s"><span class="ph"><b>GUIDE:</b> state the core problem for the owner (one line). Not yet confirmed with Mitch.</span></h2>
-    <p class="lead st gap-m"><span class="ph"><b>GUIDE:</b> one or two sentences on the pain today and who feels it, in Mitch's words.</span></p>
+    <span class="eyebrow st">When it is time to raise, borrow, or get advice</span>
+    <h2 class="st gap-s">Your business story lives in ten places, and none of them are ready.</h2>
+    <p class="lead st gap-m">Financials in one folder, the team in your head, the pitch in an old deck. When an advisor or lender asks, owners scramble, then over-share to look prepared.</p>
     <div class="fd">01</div>
   </section>
 
@@ -192,27 +185,132 @@
     <span class="chip st">The idea</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
     <p class="quote st">One profile.<br/>Owner-controlled.<br/><em>You choose what to share.</em></p>
-    <p class="lead st gap-l">Business Readiness is your business avatar: one profile you build, and share on your terms. <span class="ph"><b>GUIDE:</b> add the one-line promise of what the avatar does for the owner (confirm positioning).</span></p>
+    <p class="lead st gap-l">Business Readiness is your business avatar: one profile you build, keep current, and share on your terms with the advisors and lenders you choose.</p>
     <div class="fd">02</div>
   </section>
 
-  <!-- 4 · HOW IT WORKS (section names confirmed; descriptions need content) -->
-  <section class="slide dark" data-name="Sections">
-    <span class="chip st">How it works</span>
+  <!-- 4 · OVERVIEW -->
+  <section class="slide dark" data-name="Overview">
+    <span class="chip st">The profile</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
     <span class="eyebrow st">Six sections, five active today</span>
     <div class="grid">
-      <div class="card st"><span class="bar" style="background:var(--teal)"></span><span class="num">01</span><h3>Basic Info</h3><p><span class="ph"><b>GUIDE:</b> what this collects</span></p></div>
-      <div class="card st"><span class="bar" style="background:var(--green)"></span><span class="num">02</span><h3>Business Story</h3><p><span class="ph"><b>GUIDE:</b> what this collects</span></p></div>
-      <div class="card st"><span class="bar" style="background:var(--yellow)"></span><span class="num">03</span><h3>Team &amp; Ownership</h3><p><span class="ph"><b>GUIDE:</b> what this collects</span></p></div>
-      <div class="card st"><span class="bar" style="background:var(--lav)"></span><span class="num">04</span><h3>Financial Snapshot</h3><p><span class="ph"><b>GUIDE:</b> what this collects</span></p></div>
-      <div class="card st"><span class="bar" style="background:var(--orange)"></span><span class="num">05</span><h3>Capital &amp; Debt</h3><p><span class="ph"><b>GUIDE:</b> what this collects</span></p></div>
-      <div class="card st soon"><span class="bar" style="background:rgba(255,255,255,.4)"></span><span class="num">06</span><h3>Connected Accounts</h3><p><span class="ph"><b>GUIDE:</b> what it connects</span></p><span class="tag">Coming soon</span></div>
+      <div class="card st"><span class="bar" style="background:var(--teal)"></span><span class="num">01</span><h3>Basic Info</h3><p>Who you are.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--green)"></span><span class="num">02</span><h3>Business Story</h3><p>The narrative.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--yellow)"></span><span class="num">03</span><h3>Team &amp; Ownership</h3><p>Who runs and owns it.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--lav)"></span><span class="num">04</span><h3>Financial Snapshot</h3><p>The headline numbers.</p></div>
+      <div class="card st"><span class="bar" style="background:var(--orange)"></span><span class="num">05</span><h3>Capital &amp; Debt</h3><p>Funding and obligations.</p></div>
+      <div class="card st soon"><span class="bar" style="background:rgba(255,255,255,.4)"></span><span class="num">06</span><h3>Connected Accounts</h3><p>Live verified data.</p><span class="tag">Coming soon</span></div>
     </div>
     <div class="fd">03</div>
   </section>
 
-  <!-- 5 · CONTROL / PROGRESS -->
+  <!-- 5 · BASIC INFO -->
+  <section class="slide ink" data-name="Basic Info" style="--accent:var(--teal)">
+    <span class="chip st">Section 01</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">01</span><h2>Basic Info</h2></div>
+    <p class="lead st gap-s">The essentials that identify your business.</p>
+    <ul class="fields st">
+      <li>Legal name and DBA</li>
+      <li>Entity type</li>
+      <li>EIN or tax ID</li>
+      <li>Industry</li>
+      <li>Year founded</li>
+      <li>Locations</li>
+      <li>Website and contact</li>
+    </ul>
+    <span class="flag st">Typical fields, confirm with product</span>
+    <div class="fd">04</div>
+  </section>
+
+  <!-- 6 · BUSINESS STORY -->
+  <section class="slide dark" data-name="Business Story" style="--accent:var(--green)">
+    <span class="chip st">Section 02</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">02</span><h2>Business Story</h2></div>
+    <p class="lead st gap-s">The narrative behind the numbers.</p>
+    <ul class="fields st">
+      <li>What you do</li>
+      <li>Mission and vision</li>
+      <li>Founding story</li>
+      <li>Products and services</li>
+      <li>Customers and market</li>
+      <li>Traction and milestones</li>
+    </ul>
+    <span class="flag st">Typical fields, confirm with product</span>
+    <div class="fd">05</div>
+  </section>
+
+  <!-- 7 · TEAM & OWNERSHIP -->
+  <section class="slide ink" data-name="Team & Ownership" style="--accent:var(--yellow)">
+    <span class="chip st">Section 03</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">03</span><h2>Team &amp; Ownership</h2></div>
+    <p class="lead st gap-s">Who runs it, and who owns it.</p>
+    <ul class="fields st">
+      <li>Founders and owners</li>
+      <li>Ownership split</li>
+      <li>Leadership and key roles</li>
+      <li>Headcount</li>
+      <li>Advisors or board</li>
+    </ul>
+    <span class="flag st">Typical fields, confirm with product</span>
+    <div class="fd">06</div>
+  </section>
+
+  <!-- 8 · FINANCIAL SNAPSHOT -->
+  <section class="slide dark" data-name="Financial Snapshot" style="--accent:var(--lav)">
+    <span class="chip st">Section 04</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">04</span><h2>Financial Snapshot</h2></div>
+    <p class="lead st gap-s">The headline numbers a lender reads first.</p>
+    <ul class="fields st">
+      <li>Annual and recurring revenue</li>
+      <li>Gross margin</li>
+      <li>Profitability</li>
+      <li>Cash position</li>
+      <li>Year over year growth</li>
+      <li>Metrics for your model</li>
+    </ul>
+    <span class="flag st">Typical fields, confirm with product</span>
+    <div class="fd">07</div>
+  </section>
+
+  <!-- 9 · CAPITAL & DEBT -->
+  <section class="slide ink" data-name="Capital & Debt" style="--accent:var(--orange)">
+    <span class="chip st">Section 05</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">05</span><h2>Capital &amp; Debt</h2></div>
+    <p class="lead st gap-s">Your funding picture at a glance.</p>
+    <ul class="fields st">
+      <li>Capital raised to date</li>
+      <li>Rounds and investors</li>
+      <li>Outstanding loans and credit lines</li>
+      <li>Monthly obligations</li>
+      <li>What you are seeking now</li>
+    </ul>
+    <span class="flag st">Typical fields, confirm with product</span>
+    <div class="fd">08</div>
+  </section>
+
+  <!-- 10 · CONNECTED ACCOUNTS -->
+  <section class="slide dark" data-name="Connected Accounts" style="--accent:#c9d2e0">
+    <span class="chip st">Section 06</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">06</span><h2>Connected Accounts</h2></div>
+    <p class="lead st gap-s">Live, verified financial data, linked from the source.</p>
+    <ul class="fields st">
+      <li>Bank accounts</li>
+      <li>Accounting software</li>
+      <li>Payment processors</li>
+      <li>Auto-updates your Financial Snapshot</li>
+    </ul>
+    <span class="flag st">Coming soon, integrations to confirm</span>
+    <div class="fd">09</div>
+  </section>
+
+  <!-- 11 · CONTROL -->
   <section class="slide ink" data-name="Control">
     <span class="chip st">Built for control</span>
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
@@ -221,7 +319,7 @@
         <h2 class="st">Ready on your terms.</h2>
         <p class="lead st gap-s">You choose what to share, and with whom. A completion score tracks how ready your profile is.</p>
         <div class="kv">
-          <div class="k st"><span class="d" style="background:var(--teal)"></span><div><b>You choose what to share</b><p><span class="ph"><b>GUIDE:</b> confirm the sharing model (per section, per viewer?)</span></p></div></div>
+          <div class="k st"><span class="d" style="background:var(--teal)"></span><div><b>You hold the keys</b><p>Nothing leaves your profile until you decide to share it.</p></div></div>
           <div class="k st"><span class="d" style="background:var(--green)"></span><div><b>Completion score</b><p>Sections completed out of five, shown as you fill them in.</p></div></div>
         </div>
       </div>
@@ -243,20 +341,10 @@
         </div>
       </div>
     </div>
-    <div class="fd">04</div>
+    <div class="fd">10</div>
   </section>
 
-  <!-- 6 · WHAT'S NEXT (Connected Accounts exists + Coming soon; details need content) -->
-  <section class="slide dark" data-name="Next">
-    <span class="chip st">What's next</span>
-    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
-    <span class="eyebrow st">Connected Accounts</span>
-    <h2 class="st gap-s"><span class="ph"><b>GUIDE:</b> what Connected Accounts unlocks (one line). Marked Coming soon in the product.</span></h2>
-    <p class="lead st gap-m"><span class="ph"><b>GUIDE:</b> confirm what it connects to (bank, accounting software?) and the benefit to the owner.</span></p>
-    <div class="fd">05</div>
-  </section>
-
-  <!-- 7 · CLOSE -->
+  <!-- 12 · CLOSE -->
   <section class="slide ink" data-name="Close">
     <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
     <span class="eyebrow st">Business Readiness</span>
