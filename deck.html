@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>IMXP · Business Readiness</title>
+<meta name="description" content="IMXP Business Readiness. Company profile for advisors and lenders." />
+<meta property="og:title" content="IMXP · Business Readiness" />
+<meta property="og:description" content="Building the operating system for the next generation of events." />
+<meta property="og:image" content="media/eclipse-sky.jpg" />
+<meta name="theme-color" content="#06070c" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='black'/><text y='72' x='50' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>i</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:#ffffff;
+    --dim:rgba(255,255,255,.74); --faint:rgba(255,255,255,.5); --hair:rgba(255,255,255,.12);
+    --teal:#8fe6e2; --green:#96eda1; --yellow:#ffd75e; --lav:#c3bdf2; --orange:#ffbe7d;
+    --disp:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+    --edge:clamp(30px,5cqw,92px);
+    --acc:var(--teal); --acc-rgb:143,230,226;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{background:#08080d;color:var(--white);font-family:var(--sans);
+    overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+  #frame{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:3.2vh 2.4vw;
+    background:linear-gradient(170deg,#17171d,#0a0a0f)}
+  #stage{position:relative;aspect-ratio:16/9;width:min(94vw,calc(92vh*16/9));
+    border-radius:16px;overflow:hidden;container-type:size;
+    box-shadow:0 40px 100px rgba(0,0,0,.7),0 4px 16px rgba(0,0,0,.5);
+    border:1px solid rgba(255,255,255,.09);background:#06070c}
+  #deck{position:absolute;inset:0}
+
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(76px,12cqh,140px) var(--edge) clamp(76px,11cqh,128px);
+    opacity:0;visibility:hidden;transform:translateY(16px);
+    transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1),visibility .6s;
+    pointer-events:none;overflow:hidden}
+  .slide.active{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .slide.active .st{animation:rise .65s cubic-bezier(.22,.61,.36,1) both}
+  .slide.active .st:nth-child(2){animation-delay:.05s}
+  .slide.active .st:nth-child(3){animation-delay:.11s}
+  .slide.active .st:nth-child(4){animation-delay:.17s}
+  .slide.active .st:nth-child(5){animation-delay:.23s}
+  .slide.active .st:nth-child(6){animation-delay:.29s}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  /* ---- cosmic content slides ---- */
+  .cosmic{background:
+    radial-gradient(120% 95% at 88% -12%, rgba(var(--acc-rgb),.20), transparent 52%),
+    radial-gradient(95% 85% at -12% 112%, rgba(var(--acc-rgb),.12), transparent 55%),
+    linear-gradient(158deg,#101019,#06070c 72%)}
+  .stars{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:
+      radial-gradient(1.4px 1.4px at 12% 24%,#fff,transparent),
+      radial-gradient(1.2px 1.2px at 28% 68%,#fff,transparent),
+      radial-gradient(1px 1px at 46% 18%,#fff,transparent),
+      radial-gradient(1.3px 1.3px at 63% 52%,#fff,transparent),
+      radial-gradient(1px 1px at 78% 30%,#fff,transparent),
+      radial-gradient(1.5px 1.5px at 88% 72%,#fff,transparent),
+      radial-gradient(1px 1px at 36% 88%,#fff,transparent),
+      radial-gradient(1.2px 1.2px at 70% 84%,#fff,transparent),
+      radial-gradient(1px 1px at 55% 8%,#fff,transparent)}
+  .ring-motif{position:absolute;top:-14%;right:-8%;width:clamp(220px,44cqh,520px);aspect-ratio:1;z-index:0;pointer-events:none;
+    border-radius:50%;background:radial-gradient(circle,transparent 60%,rgba(var(--acc-rgb),.55) 61.5% 63%,transparent 66%);
+    filter:blur(.4px);opacity:.5}
+  .ghost{position:absolute;left:calc(var(--edge) - .06em);bottom:-.16em;z-index:0;pointer-events:none;
+    font-family:var(--disp);font-weight:900;font-size:clamp(20rem,52cqh,44rem);line-height:.7;
+    color:rgba(var(--acc-rgb),.07);letter-spacing:-.05em;user-select:none}
+  .cosmic>*:not(.stars):not(.ring-motif):not(.ghost):not(.logo):not(.fd):not(.chip){position:relative;z-index:2}
+
+  /* chrome */
+  .chip{position:absolute;top:clamp(28px,5cqh,54px);left:var(--edge);z-index:4;
+    font-family:var(--disp);font-weight:800;font-size:clamp(.7rem,.95cqw,.86rem);letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+  .logo{position:absolute;top:clamp(24px,4.4cqh,48px);right:var(--edge);z-index:4;height:clamp(19px,2.7cqh,27px)}
+  .logo img{height:100%;width:auto;display:block}
+  .fd{position:absolute;bottom:clamp(22px,3.8cqh,40px);right:var(--edge);z-index:4;
+    font-family:var(--disp);font-weight:800;font-size:clamp(.64rem,.85cqw,.8rem);letter-spacing:.14em;color:var(--faint)}
+
+  /* type */
+  .eyebrow{font-family:var(--disp);font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    font-size:clamp(.7rem,.98cqw,.9rem);color:var(--acc)}
+  h1{font-family:var(--disp);font-weight:900;line-height:.98;letter-spacing:-.022em;font-size:clamp(2.3rem,6.6cqw,5.4rem)}
+  .lead{font-weight:300;font-size:clamp(1rem,1.55cqw,1.42rem);line-height:1.5;color:var(--dim);max-width:46ch}
+
+  .sechead{display:flex;align-items:baseline;gap:clamp(14px,2cqw,30px)}
+  .secnum{font-family:var(--disp);font-weight:900;font-size:clamp(1.7rem,4.4cqw,3.4rem);line-height:.85;letter-spacing:-.03em;color:var(--acc)}
+  h2{font-family:var(--disp);font-weight:800;line-height:1.0;letter-spacing:-.02em;font-size:clamp(1.7rem,4.2cqw,3.2rem)}
+  .subhead{margin-top:clamp(8px,1.4cqh,16px);color:var(--dim);font-weight:300;font-size:clamp(.95rem,1.4cqw,1.28rem);max-width:44ch}
+
+  /* spec sheet */
+  .spec{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(30px,4.4cqw,84px);
+    margin-top:clamp(20px,3cqh,42px);max-width:min(94%,72ch)}
+  .spec .row{padding:clamp(11px,1.85cqh,19px) 0;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:5px}
+  .spec .row .k{font-family:var(--disp);font-weight:800;font-size:clamp(.58rem,.76cqw,.7rem);letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+  .spec .row .v{font-size:clamp(.96rem,1.32cqw,1.26rem);color:#fff;font-weight:400;line-height:1.28}
+  .note{margin-top:clamp(16px,2.4cqh,26px);align-self:flex-start;font-family:var(--disp);font-weight:700;
+    font-size:clamp(.58rem,.76cqw,.7rem);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+    border:1px solid var(--hair);padding:6px 13px;border-radius:999px}
+
+  /* photo slides */
+  .photo .bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;
+    transform:scale(1.06);transform-origin:50% 45%}
+  .slide.active .photo-anim{animation:drift 30s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:scale(1.05) translate3d(-1%,.6%,0)}to{transform:scale(1.13) translate3d(1%,-.8%,0)}}
+  .photo .scrim{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .photo>*:not(.bg):not(.scrim):not(.logo):not(.fd):not(.chip){position:relative;z-index:2}
+
+  /* cover */
+  .cover .scrim{background:linear-gradient(90deg,rgba(4,5,10,.9) 0%,rgba(4,5,10,.62) 42%,rgba(4,5,10,.2) 70%,transparent 100%),
+    linear-gradient(0deg,rgba(4,5,10,.85),transparent 55%)}
+  .cover .kicker{display:flex;align-items:center;gap:14px}
+  .cover .kicker .ln{width:clamp(40px,6cqw,96px);height:2px;background:var(--teal)}
+  .cover h1{max-width:17ch;margin-top:clamp(16px,2.6cqh,30px)}
+  .cover .org{margin-top:clamp(18px,2.8cqh,34px);font-family:var(--disp);font-weight:700;letter-spacing:.03em;
+    font-size:clamp(.86rem,1.2cqw,1.12rem);color:var(--dim)}
+  .cover .org b{color:#fff}
+
+  /* story slide */
+  .story .scrim{background:linear-gradient(90deg,rgba(4,5,10,.92) 0%,rgba(4,5,10,.6) 48%,rgba(4,5,10,.28) 100%),
+    linear-gradient(0deg,rgba(4,5,10,.8),transparent 60%)}
+  .story .mission{font-family:var(--disp);font-weight:800;line-height:1.04;letter-spacing:-.02em;
+    font-size:clamp(1.6rem,3.7cqw,2.9rem);max-width:19ch}
+  .story .mission em{font-style:normal;color:var(--teal)}
+  .story .vision{margin-top:clamp(14px,2.2cqh,26px);color:var(--dim);font-weight:300;
+    font-size:clamp(.95rem,1.4cqw,1.24rem);max-width:40ch;line-height:1.5}
+  .trilogy{display:flex;gap:clamp(10px,1.6cqw,24px);margin-top:clamp(20px,3cqh,38px);flex-wrap:wrap}
+  .trilogy .t{padding:clamp(12px,1.8cqh,18px) clamp(16px,1.8cqw,26px);border-radius:13px;
+    background:rgba(10,12,20,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.14);min-width:clamp(120px,15cqw,180px)}
+  .trilogy .t .yr{font-family:var(--disp);font-weight:900;font-size:clamp(1rem,1.5cqw,1.35rem);color:#fff;letter-spacing:-.01em}
+  .trilogy .t .pl{margin-top:3px;font-size:clamp(.78rem,1.02cqw,.98rem);color:var(--dim)}
+  .trilogy .t.now{border-color:rgba(143,230,226,.5)}
+  .trilogy .t.now .yr{color:var(--teal)}
+
+  /* founder spotlight */
+  .founder{display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,3.4cqw,56px);align-items:center;margin-top:clamp(18px,2.6cqh,34px)}
+  .avatar{width:clamp(96px,15cqh,168px);aspect-ratio:1;border-radius:50%;flex:none;display:grid;place-items:center;
+    font-family:var(--disp);font-weight:900;font-size:clamp(1.8rem,3.4cqw,3rem);color:#0c0c12;
+    background:linear-gradient(150deg,var(--yellow),#ffb84d);
+    box-shadow:0 0 60px 6px rgba(255,215,94,.28),inset 0 2px 10px rgba(255,255,255,.4)}
+  .founder .who .nm{font-family:var(--disp);font-weight:900;font-size:clamp(1.6rem,3.4cqw,2.8rem);line-height:1;letter-spacing:-.02em}
+  .founder .who .rl{margin-top:8px;font-family:var(--disp);font-weight:700;letter-spacing:.04em;
+    font-size:clamp(.9rem,1.3cqw,1.2rem);color:var(--yellow)}
+  .founder .who .em{margin-top:6px;color:var(--dim);font-size:clamp(.85rem,1.1cqw,1.02rem)}
+  .subrows{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2cqw,32px);margin-top:clamp(22px,3.2cqh,44px);max-width:78ch}
+  .subrows .r{border-top:1px solid var(--hair);padding-top:clamp(11px,1.7cqh,17px)}
+  .subrows .r .k{font-family:var(--disp);font-weight:800;font-size:clamp(.56rem,.74cqw,.68rem);letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+  .subrows .r .v{margin-top:5px;font-size:clamp(.9rem,1.2cqw,1.12rem);color:#fff;line-height:1.28}
+
+  /* revenue pillars */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6cqw,22px);margin-top:clamp(22px,3.2cqh,44px)}
+  .pillar{border-radius:14px;padding:clamp(16px,2.2cqh,26px) clamp(15px,1.7cqw,22px);
+    background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden;
+    min-height:clamp(120px,20cqh,180px);display:flex;flex-direction:column}
+  .pillar::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--lav)}
+  .pillar .pn{font-family:var(--disp);font-weight:800;font-size:.72rem;color:var(--faint);letter-spacing:.05em}
+  .pillar h3{font-family:var(--disp);font-weight:800;font-size:clamp(.98rem,1.35cqw,1.22rem);line-height:1.08;margin-top:8px;color:#fff}
+  .pillar p{margin-top:auto;font-size:clamp(.78rem,1cqw,.96rem);color:var(--dim);line-height:1.35;padding-top:12px}
+  .pillar.primary{background:rgba(195,189,242,.12);border-color:rgba(195,189,242,.4)}
+
+  /* capital statement */
+  .stage-big{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,9cqw,7rem);line-height:.86;letter-spacing:-.03em;
+    color:var(--orange);margin-top:clamp(10px,1.6cqh,18px)}
+  .useof{display:flex;flex-direction:column;gap:clamp(11px,1.7cqh,17px);margin-top:clamp(20px,3cqh,38px);max-width:52ch}
+  .useof .u{display:flex;gap:14px;align-items:flex-start;font-size:clamp(.95rem,1.3cqw,1.22rem);color:#fff;line-height:1.32}
+  .useof .u::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--orange);margin-top:9px;flex:none}
+  .useof .u span{color:var(--dim)}
+
+  /* readiness meter */
+  .split{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4cqw,72px);align-items:center;height:100%}
+  .split .colL{display:flex;flex-direction:column;justify-content:center}
+  .mock{border-radius:20px;border:1px solid rgba(255,255,255,.14);
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    padding:clamp(22px,3cqh,36px) clamp(22px,2.6cqw,38px);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .mhead{display:flex;align-items:center;gap:clamp(16px,2cqw,26px)}
+  .ring{--p:0;width:clamp(66px,9cqh,100px);aspect-ratio:1;border-radius:50%;flex:none;
+    background:conic-gradient(var(--teal) calc(var(--p)*1%),rgba(255,255,255,.14) 0);
+    display:grid;place-items:center;position:relative;box-shadow:0 0 40px rgba(143,230,226,.25)}
+  .ring::after{content:'';position:absolute;inset:9px;border-radius:50%;background:#0c0e16}
+  .ring b{position:relative;z-index:1;font-family:var(--disp);font-weight:900;font-size:clamp(1rem,1.5cqw,1.35rem);color:#fff}
+  .mhead .mt b{font-family:var(--disp);font-weight:800;font-size:clamp(1.05rem,1.7cqw,1.5rem);color:#fff;display:block}
+  .mhead .mt span{font-size:clamp(.82rem,1.05cqw,1rem);color:var(--dim)}
+  .checklist{list-style:none;margin-top:clamp(18px,2.6cqh,28px);display:grid;grid-template-columns:1fr 1fr;
+    grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:clamp(10px,1.5cqh,16px) clamp(16px,1.8cqw,28px)}
+  .checklist li{display:flex;align-items:center;gap:11px;font-size:clamp(.84rem,1.05cqw,1.02rem);color:var(--dim)}
+  .checklist li i{width:15px;height:15px;border-radius:50%;border:1.6px dashed rgba(255,255,255,.42);flex:none}
+
+  /* nav */
+  #dots{position:absolute;bottom:clamp(22px,3.8cqh,40px);left:var(--edge);z-index:6;display:flex;gap:7px}
+  #dots button{width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(150,150,160,.45);transition:transform .25s,background .25s}
+  #dots button.on{background:var(--teal);transform:scale(1.45)}
+  #edge-l,#edge-r{position:absolute;top:0;bottom:0;width:13%;z-index:7;cursor:pointer;background:transparent;border:none}
+  #edge-l{left:0}#edge-r{right:0}
+  #counter{position:absolute;bottom:clamp(22px,3.8cqh,40px);left:50%;transform:translateX(-50%);z-index:6;
+    font-family:var(--disp);font-weight:800;font-size:.72rem;letter-spacing:.12em;color:rgba(150,150,160,.7)}
+  .hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);
+    font-size:.72rem;letter-spacing:.04em;z-index:10;transition:opacity .5s}
+
+  @media (max-width:720px){
+    .spec,.subrows,.pillars{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr;gap:20px}.split .colR{display:none}
+    .checklist{grid-template-columns:1fr;grid-auto-flow:row;grid-template-rows:none}
+    .founder{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div id="frame"><div id="stage"><div id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide photo cover active" data-name="Cover">
+    <div class="bg photo-anim" style="background-image:url('media/eclipse-sky.jpg')"></div>
+    <div class="scrim"></div>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="st kicker"><span class="ln"></span><span class="eyebrow">Business Readiness · Company Profile</span></div>
+    <h1 class="st">Building the operating system for the next generation of events.</h1>
+    <div class="st org">IMXP · Immersive Experiences &nbsp;·&nbsp; Organizers of <b>The Eclipse Trilogy</b></div>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 2 · BASIC INFO -->
+  <section class="slide cosmic" data-name="Basic Info" style="--acc:var(--teal);--acc-rgb:143,230,226">
+    <div class="stars"></div><div class="ring-motif"></div><div class="ghost">01</div>
+    <span class="chip st">Section 01</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">01</span><h2>Basic Info</h2></div>
+    <p class="subhead st">IMXP, Immersive Experiences. A vertically-integrated experiential company, and the organizers of The Eclipse Trilogy.</p>
+    <div class="spec st">
+      <div class="row"><span class="k">Industry</span><span class="v">Live events and experiential technology</span></div>
+      <div class="row"><span class="k">Entity</span><span class="v">Delaware C-Corp</span></div>
+      <div class="row"><span class="k">Headquarters</span><span class="v">Austin, Texas, USA</span></div>
+      <div class="row"><span class="k">Footprint</span><span class="v">Iceland · Egypt · Australasia</span></div>
+      <div class="row"><span class="k">Heritage</span><span class="v">Texas Eclipse, 2024</span></div>
+      <div class="row"><span class="k">Website</span><span class="v">imxp.org &nbsp;·&nbsp; hallo@im-xp.com</span></div>
+    </div>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 3 · BUSINESS STORY (photo) -->
+  <section class="slide photo story" data-name="Business Story">
+    <div class="bg photo-anim" style="background-image:url('media/festival.jpg')"></div>
+    <div class="scrim"></div>
+    <span class="chip st" style="color:var(--teal)">Section 02 · Business Story</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <p class="mission st">Reconnecting the human network through <em>shared experience</em>, at planetary scale.</p>
+    <p class="vision st">Born from Texas Eclipse in 2024. Our vision: bring humans into alignment with themselves, our planet, and the Cosmos.</p>
+    <div class="trilogy st">
+      <div class="t now"><div class="yr">Iceland · 2026</div><div class="pl">Delivered, Snaefellsnes</div></div>
+      <div class="t"><div class="yr">Egypt · 2027</div><div class="pl">Luxor and Greater Egypt</div></div>
+      <div class="t"><div class="yr">Australasia · 2028</div><div class="pl">Next in the Trilogy</div></div>
+    </div>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 4 · TEAM & OWNERSHIP -->
+  <section class="slide cosmic" data-name="Team & Ownership" style="--acc:var(--yellow);--acc-rgb:255,215,94">
+    <div class="stars"></div><div class="ring-motif"></div><div class="ghost">03</div>
+    <span class="chip st">Section 03</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">03</span><h2>Team &amp; Ownership</h2></div>
+    <div class="founder st">
+      <div class="avatar">MM</div>
+      <div class="who">
+        <div class="nm">Mitch Morales</div>
+        <div class="rl">Founder &amp; CEO</div>
+        <div class="em">Created Texas Eclipse, 2024 · mitch@im-xp.com</div>
+      </div>
+    </div>
+    <div class="subrows st">
+      <div class="r"><div class="k">Structure</div><div class="v">Delaware C-Corp</div></div>
+      <div class="r"><div class="k">Ownership</div><div class="v">Held by the founding team</div></div>
+      <div class="r"><div class="k">Team</div><div class="v">Globally distributed</div></div>
+    </div>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 5 · FINANCIAL SNAPSHOT -->
+  <section class="slide cosmic" data-name="Financial Snapshot" style="--acc:var(--lav);--acc-rgb:195,189,242">
+    <div class="stars"></div><div class="ring-motif"></div><div class="ghost">04</div>
+    <span class="chip st">Section 04</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">04</span><h2>Financial Snapshot</h2></div>
+    <p class="subhead st">A vertically-integrated model, built to grow margin. Revenue-generating events double as an R&amp;D lab for the platform.</p>
+    <div class="pillars st">
+      <div class="pillar primary"><span class="pn">Primary</span><h3>Ticketing &amp; memberships</h3><p>Core revenue across the Trilogy</p></div>
+      <div class="pillar"><span class="pn">02</span><h3>The Portal</h3><p>Residencies and patrons</p></div>
+      <div class="pillar"><span class="pn">03</span><h3>Sponsorships</h3><p>Brand and institutional partners</p></div>
+      <div class="pillar"><span class="pn">04</span><h3>Production services</h3><p>Deploying the operating system</p></div>
+    </div>
+    <span class="note st">Figures shared privately, on request</span>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 6 · CAPITAL & DEBT -->
+  <section class="slide cosmic" data-name="Capital & Debt" style="--acc:var(--orange);--acc-rgb:255,190,125">
+    <div class="stars"></div><div class="ring-motif"></div><div class="ghost">05</div>
+    <span class="chip st">Section 05</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="sechead st"><span class="secnum">05</span><h2>Capital &amp; Debt</h2></div>
+    <div class="stage-big st">Seed</div>
+    <div class="useof st">
+      <div class="u"><div>Deploy <span>the Eclipse Trilogy across Iceland, Egypt, and Australasia</span></div></div>
+      <div class="u"><div>Scale <span>the IMXP Operating System and production platform</span></div></div>
+      <div class="u"><div>Structure <span>Delaware C-Corp</span></div></div>
+    </div>
+    <span class="note st">Terms and figures shared privately, under NDA</span>
+    <div class="fd">IMXP</div>
+  </section>
+
+  <!-- 7 · READINESS -->
+  <section class="slide cosmic" data-name="Readiness" style="--acc:var(--teal);--acc-rgb:143,230,226">
+    <div class="stars"></div><div class="ring-motif"></div>
+    <span class="chip st">Readiness</span>
+    <div class="logo st"><img src="imxp-logo.png" alt="IMXP" /></div>
+    <div class="split">
+      <div class="colL">
+        <div class="sechead st" style="margin-bottom:clamp(8px,1.4cqh,16px)"><h2>Your readiness,<br/>at a glance.</h2></div>
+        <p class="lead st">Complete each section at your pace. You choose what to share, and with whom.</p>
+      </div>
+      <div class="colR st">
+        <div class="mock">
+          <div class="mhead">
+            <div class="ring" style="--p:0"><b>0%</b></div>
+            <div class="mt"><b>Business Readiness</b><span>0 of 5 sections completed</span></div>
+          </div>
+          <ul class="checklist">
+            <li><i></i>Basic Info</li>
+            <li><i></i>Business Story</li>
+            <li><i></i>Team &amp; Ownership</li>
+            <li><i></i>Financial Snapshot</li>
+            <li><i></i>Capital &amp; Debt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="fd">IMXP</div>
+  </section>
+
+</div>
+
+<button id="edge-l" aria-label="Previous"></button>
+<button id="edge-r" aria-label="Next"></button>
+<div id="dots"></div>
+<div id="counter"></div>
+</div></div>
+<div class="hint" id="hint">Use arrow keys or click to navigate</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots');
+  var counter=document.getElementById('counter');
+  var i=0;
+  slides.forEach(function(s,n){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Slide '+(n+1));
+    b.addEventListener('click',function(){go(n)});
+    dotsWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+  function render(){
+    slides.forEach(function(s,n){s.classList.toggle('active',n===i)});
+    dots.forEach(function(d,n){d.classList.toggle('on',n===i)});
+    counter.textContent=('0'+(i+1)).slice(-2)+' / '+('0'+slides.length).slice(-2);
+  }
+  function go(n){i=Math.max(0,Math.min(slides.length-1,n));render();
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1))}
+  function next(){go(i+1)} function prev(){go(i-1)}
+  document.getElementById('edge-r').addEventListener('click',next);
+  document.getElementById('edge-l').addEventListener('click',prev);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(slides.length-1)}
+  });
+  var sx=0;
+  document.getElementById('stage').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  document.getElementById('stage').addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>44){dx<0?next():prev()}
+  },{passive:true});
+  var hint=document.getElementById('hint');
+  setTimeout(function(){hint.style.opacity='0'},4200);
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  if(h>=1&&h<=slides.length)i=h-1;
+  render();
+})();
+</script>
+</body>
+</html>
