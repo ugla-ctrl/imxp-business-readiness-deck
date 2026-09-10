@@ -95,7 +95,7 @@
 
   /* financial band */
   .fin{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2cqw,30px);
-    margin-top:clamp(12px,1.9cqh,22px);padding-top:clamp(11px,1.7cqh,18px);border-top:1px solid var(--hair)}
+    margin-top:clamp(8px,1.2cqh,14px);padding-top:clamp(8px,1.2cqh,14px);border-top:1px solid var(--hair)}
   .card .h{display:flex;align-items:center;gap:.6em;font-family:var(--disp);font-weight:800;
     letter-spacing:.13em;text-transform:uppercase;font-size:clamp(.54rem,.8cqw,.72rem);margin-bottom:.6em}
   .card .h::before{content:'';width:14px;height:2px;background:var(--acc)}
@@ -115,6 +115,16 @@
   .use .u b{color:#fff;font-weight:600}
 
   /* footer */
+  /* product strip */
+  .prod{margin-top:clamp(7px,1.1cqh,13px);padding-top:clamp(7px,1.1cqh,13px);border-top:1px solid var(--hair)}
+  .prod .ph{display:flex;align-items:center;gap:.6em;font-family:var(--disp);font-weight:800;letter-spacing:.13em;text-transform:uppercase;font-size:clamp(.54rem,.8cqw,.72rem);margin-bottom:.65em}
+  .prod .ph::before{content:'';width:14px;height:2px;background:var(--teal)}
+  .prod .ph span{color:var(--teal)}
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.8cqw,24px)}
+  .pill-t{font-family:var(--disp);font-weight:800;font-size:clamp(.64rem,.98cqw,.88rem);color:#fff;margin-bottom:.28em;display:flex;align-items:center;gap:.5em}
+  .pill-t .live{font-family:var(--sans);font-weight:600;font-size:clamp(.4rem,.6cqw,.54rem);color:#06070c;background:var(--teal);border-radius:999px;padding:1px 7px}
+  .pill-d{font-size:clamp(.5rem,.76cqw,.68rem);color:var(--dim);line-height:1.38;font-weight:300}
+
   .foot{padding-top:clamp(9px,1.4cqh,16px);border-top:1px solid var(--hair);
     display:flex;justify-content:space-between;align-items:center;gap:1em}
   .foot .c{font-family:var(--disp);font-weight:700;font-size:clamp(.6rem,.95cqw,.86rem);color:#fff}
@@ -186,6 +196,28 @@
       <div class="row"><span class="k">Ownership</span><span class="v">Founder-led, early investors</span></div>
       <div class="row"><span class="k">Team</span><span class="v">Globally distributed</span></div>
       <div class="row"><span class="k">Founder</span><span class="v">Created Texas Eclipse, 2024</span></div>
+    </div>
+  </div>
+
+  <div class="prod">
+    <div class="ph"><span>Platform</span></div>
+    <div class="pillars">
+      <div class="pill">
+        <div class="pill-t">IMXP Operating System</div>
+        <div class="pill-d">Infrastructure for rapidly deploying festivals and transformative gatherings globally</div>
+      </div>
+      <div class="pill">
+        <div class="pill-t">Festival in a Box <span class="live">Live</span></div>
+        <div class="pill-d">AI-enabled production system &middot; deployed on Iceland Eclipse 2026</div>
+      </div>
+      <div class="pill">
+        <div class="pill-t">Unified Profile</div>
+        <div class="pill-d">Identity, behavior &amp; reputation layer across all IMXP experiences</div>
+      </div>
+      <div class="pill">
+        <div class="pill-t">Agent Crew</div>
+        <div class="pill-d">Programmable AI workflows for globally-distributed event coordination</div>
+      </div>
     </div>
   </div>
 
